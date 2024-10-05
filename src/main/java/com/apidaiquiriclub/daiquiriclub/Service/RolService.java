@@ -24,7 +24,7 @@ public class RolService {
                 rol -> new RolDto(rol.getId(),rol.getNombre())
         ).toList();
     }
-    public RolDto getRolById (Integer id){
+    public RolDto getRolById (int id){
         Optional<Rol> rolOp = rolRepository.findById(id);
 
         if(rolOp.isPresent()){
@@ -38,6 +38,23 @@ public class RolService {
         rol.setNombre(rolDto.getNombre());
         rolRepository.save(rol);
         return new RolDto(rol.getId(),rol.getNombre());
+    }
+    public RolDto updateRol (int id, RolDto rolDto) {
+        Optional<Rol> rolOp = rolRepository.findById(id);
+        if(rolOp.isPresent()){
+            Rol rol = rolOp.get();
+            rol.setNombre(rolDto.getNombre());
+            rolRepository.save(rol);
+            return new RolDto(rolDto.getId(),rolDto.getNombre());
+        }
+        return null;
+    }
+    public void deleteRol(int id){
+        Optional<Rol> rolOp = rolRepository.findById(id);
+        if (rolOp.isPresent()){
+            Rol rol = rolOp.get();
+            rolRepository.deleteById(rol.getId());
+        }
     }
 }
 
