@@ -17,4 +17,8 @@ public class Rol {
     private Integer id;
     @Column(name = "nombre")
     private String nombre;
+
+    public Rol(String nombre) {
+        this.nombre = nombre;
+    }
 }

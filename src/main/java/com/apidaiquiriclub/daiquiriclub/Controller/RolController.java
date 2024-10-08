@@ -15,6 +15,7 @@ public class RolController {
     public RolController(RolService rolService) {
         this.rolService = rolService;
     }
+
     @GetMapping("/rol")
     public ResponseEntity<List<RolDto>> getAllRol(){
         List<RolDto> rols = rolService.getAllRol();
