@@ -38,6 +38,7 @@ public class RolController {
     }
     @DeleteMapping("/rol/{id}")
     public ResponseEntity<String> deleteRol(@PathVariable int id){
+        rolService.deleteRol(id);
         return ResponseEntity.ok("Se eliminó correctamente el rol");
     }
 }

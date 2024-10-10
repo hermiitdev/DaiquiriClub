@@ -19,7 +19,7 @@ import java.util.List;
 public class UsuarioDto {
     private Integer id;
     @NotBlank(message = "El nombre es obligatorio")
-    private Integer nombre;
+    private String nombre;
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "El email debe ser correcto")
     private String email;
@@ -27,4 +27,11 @@ public class UsuarioDto {
     private String password;
     @Size(min = 1, message = "Debe ser almenos 1 rol")
     private List<RolDto> rol = new ArrayList<>();
+
+    public UsuarioDto(Integer id, String nombre, String email, List<RolDto> rol) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.rol = rol;
+    }
 }
